@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - Wagamama Menu Guide</title>
+    <meta name="description" content="Read the latest articles, news, and reviews about the Wagamama menu in the UK.">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .filters {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        .filter-btn {
+            padding: 8px 16px;
+            border: 1px solid var(--color-primary);
+            background: transparent;
+            color: var(--color-primary);
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .filter-btn.active, .filter-btn:hover {
+            background: var(--color-primary);
+            color: white;
+        }
+        .search-bar {
+            width: 100%;
+            max-width: 400px;
+            padding: 10px;
+            border: 1px solid var(--color-border);
+            border-radius: 20px;
+            margin-bottom: 20px;
+        }
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 40px;
+        }
+        .pagination button {
+            padding: 8px 16px;
+            border: 1px solid var(--color-border);
+            background: white;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        .pagination button.active {
+            background: var(--color-primary);
+            color: white;
+            border-color: var(--color-primary);
+        }
+        .post-card-content {
+            padding-top: 10px;
+        }
+        .post-meta {
+            font-size: 0.85rem;
+            color: #666;
+            margin-bottom: 10px;
+        }
+        .category-tag {
+            display: inline-block;
+            background: var(--color-border);
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container nav-container">
+            <div class="logo">Wagamama Menu Guide</div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container main-content">
+        <h1>Latest Articles & Reviews</h1>
+        
+        <input type="text" class="search-bar" placeholder="Search articles...">
+        
+        <div class="filters">
+            <button class="filter-btn active">All</button>
+            <button class="filter-btn">Noodles</button>
+            <button class="filter-btn">Curries</button>
+            <button class="filter-btn">Vegan</button>
+        </div>
+
+        <div class="grid" id="blog-grid">
+            <!-- Blog posts will be injected here via JavaScript -->
+        </div>
+
+        <div class="pagination">
+            <button>&laquo; Prev</button>
+            <button class="active">1</button>
+            <button>2</button>
+            <button>3</button>
+            <button>Next &raquo;</button>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 Wagamama Menu Guide. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // AUTO-FETCH BLOG SYSTEM PLACEHOLDER
+        // In a real static environment without a build step, JavaScript would fetch a list of files or an index.json
+        // Since this is purely static HTML, we simulate scanning the `/blog/` folder.
+        // Filename convention: YYYY-MM-DD-title.html
+        
+        const mockPosts = [
+            {
+                title: "Top 5 Noodle Dishes You Must Try",
+                url: "blog/2024-01-15-top-noodle-dishes.html",
+                date: "15 January 2024",
+                author: "Muzammil Hussain",
+                excerpt: "Discover the best noodle dishes on the UK menu, from rich ramen to smoky teppanyaki favourites.",
+                category: "Noodles",
+                image: "images/noodle.png"
+            },
+            {
+                title: "The Ultimate Guide to Vegan Options",
+                url: "blog/2024-02-10-vegan-guide.html",
+                date: "10 February 2024",
+                author: "Muzammil Hussain",
+                excerpt: "A comprehensive look at the plant-based menu, featuring the famous Vegatsu and Kare Burosu.",
+                category: "Vegan",
+                image: "images/vegan.png"
+            },
+            // Generates up to 9 posts per page
+            ...Array.from({length: 7}).map((_, i) => ({
+                title: `Delicious Menu Spotlight #${i+3}`,
+                url: `blog/2024-03-0${i+1}-spotlight.html`,
+                date: `0${i+1} March 2024`,
+                author: "Muzammil Hussain",
+                excerpt: "Exploring more fantastic flavours and seasonal additions to the popular UK menu.",
+                category: "Curries",
+                image: "images/curry.png"
+            }))
+        ];
+
+        function renderPosts(posts) {
+            const grid = document.getElementById('blog-grid');
+            grid.innerHTML = '';
+            
+            // Sort by newest first (simulated based on mock data order which we pretend is parsed from filename YYYY-MM-DD)
+            
+            posts.forEach(post => {
+                const card = document.createElement('article');
+                card.className = 'card';
+                card.innerHTML = `
+                    <div class="card-img-placeholder" style="padding: 0; overflow: hidden;">
+                        <img src="${post.image}" alt="${post.title}" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="post-card-content">
+                        <span class="category-tag">${post.category}</span>
+                        <h3><a href="${post.url}">${post.title}</a></h3>
+                        <div class="post-meta">By ${post.author} | ${post.date}</div>
+                        <p>${post.excerpt}</p>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // Initial render
+        renderPosts(mockPosts);
+    </script>
+</body>
+</html>

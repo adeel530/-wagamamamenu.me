@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- 
+    MULTI-PAGE ANCHOR INSTRUCTIONS:
+    
+    1. How to add new blog posts:
+       - Save new HTML files in the `/blog/` folder.
+       - Ensure the file is completely static HTML using this template.
+
+    2. Filename Convention:
+       - Format: YYYY-MM-DD-post-title.html
+       - Example: 2024-01-15-top-noodle-dishes.html
+       - The auto-fetch JS on blog.html uses this date format to sort posts by newest first.
+
+    3. Required Meta Tags (Frontmatter equivalent for static HTML):
+       - Update the <title> tag.
+       - Update <meta name="description">.
+       - Update Open Graph tags (og:title, og:description, og:url, og:image).
+       - Ensure the canonical link is correct.
+
+    4. How the Auto-Fetch System Works:
+       - The category page (blog.html) contains a placeholder JavaScript function.
+       - In a production environment without a static site generator, you would use a build script (Node.js/Python) to parse this folder and generate an `index.json`, which the JS fetches and renders.
+       - Alternatively, update the `mockPosts` array in `blog.html` manually until a build script is implemented.
+-->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Post Title - Wagamama Menu Guide</title>
+    <meta name="description" content="A brief 150-character excerpt describing the blog post content for SEO purposes.">
+    <meta name="author" content="Muzammil Hussain">
+    <link rel="canonical" href="https://wagamamamenu.me-netlify.app/blog/YYYY-MM-DD-post-title.html">
+    <meta property="og:title" content="Blog Post Title">
+    <meta property="og:description" content="A brief excerpt describing the post for social sharing.">
+    <meta property="og:type" content="article">
+    <link rel="stylesheet" href="../css/style.css">
+    
+    <!-- Adjust CSS path since this is inside /blog/ -->
+    <style>
+        .post-header {
+            text-align: center;
+            margin-bottom: var(--spacing-xl);
+        }
+        .post-meta-info {
+            color: #666;
+            margin-bottom: var(--spacing-lg);
+        }
+        .social-share {
+            display: flex;
+            gap: 10px;
+            margin: var(--spacing-lg) 0;
+        }
+        .social-btn {
+            padding: 5px 15px;
+            background: var(--color-border);
+            border-radius: var(--border-radius);
+            font-size: 0.9rem;
+        }
+        .related-posts {
+            margin-top: var(--spacing-xl);
+            border-top: 1px solid var(--color-border);
+            padding-top: var(--spacing-xl);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container nav-container">
+            <div class="logo">Wagamama Menu Guide</div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../about.html">About Us</a></li>
+                    <li><a href="../blog.html">Blog</a></li>
+                    <li><a href="../contact.html">Contact Us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container main-content" style="max-width: 800px;">
+        <article>
+            <div class="post-header">
+                <span style="background: var(--color-border); padding: 5px 10px; border-radius: 12px; font-size: 0.8rem;">Category Name</span>
+                <h1>Your Blog Post Title Goes Here (H1)</h1>
+                <div class="post-meta-info">Written by Muzammil Hussain | DD Month YYYY</div>
+            </div>
+
+            <div style="width: 100%; height: 400px; background: var(--color-border); display: flex; align-items: center; justify-content: center; margin-bottom: var(--spacing-lg); border-radius: var(--border-radius); overflow: hidden;">
+                <img src="../images/hero.png" alt="Featured Post Image" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+
+            <!-- Content Area -->
+            <p><strong>Introductory paragraph.</strong> Write your engaging introduction here. Make sure to hook the reader and explain what the article will cover regarding the wagamamamenu.me offerings.</p>
+            
+            <h2>First Main Heading (H2)</h2>
+            <p>Body content goes here. Remember to maintain a natural tone and use appropriate semantic HTML tags.</p>
+            
+            <h3>Subheading (H3)</h3>
+            <p>More detailed content, bullet points, or lists.</p>
+            <ul>
+                <li>Important point 1</li>
+                <li>Important point 2</li>
+            </ul>
+
+            <!-- Social Sharing Placeholder -->
+            <div class="social-share">
+                <strong>Share:</strong>
+                <span class="social-btn">Facebook</span>
+                <span class="social-btn">Twitter</span>
+                <span class="social-btn">LinkedIn</span>
+            </div>
+        </article>
+
+        <!-- Author Bio Section -->
+        <aside class="author-bio">
+            <div class="author-avatar" style="overflow: hidden;">
+                <img src="../images/author_avatar.png" alt="Muzammil Hussain" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <div class="author-info">
+                <h4>Muzammil Hussain</h4>
+                <p><strong>SEO Specialist & Food Writer</strong> | Jhang, Punjab Pakistan</p>
+                <p>My self Muzammil Hussain. i knwo how we make a profile backlinks on off page SEO. I combine my expertise in digital marketing with a deep passion for reviewing and analyzing modern restaurant menus.</p>
+            </div>
+            <!-- Author Schema -->
+            <script type="application/ld+json">
+            {
+              "@context": "https://schema.org",
+              "@type": "Person",
+              "name": "Muzammil Hussain",
+              "jobTitle": "SEO Specialist & Food Writer",
+              "homeLocation": {
+                "@type": "Place",
+                "name": "Jhang, Punjab Pakistan"
+              },
+              "description": "My self Muzammil Hussain. i knwo how we make a profile backlinks on off page SEO."
+            }
+            </script>
+        </aside>
+
+        <!-- Related Posts Placeholder -->
+        <section class="related-posts">
+            <h2>Related Articles</h2>
+            <div class="grid">
+                <div class="card">
+                    <div class="card-img-placeholder" style="height: 150px; padding: 0; overflow: hidden;">
+                        <img src="../images/noodle.png" alt="Related Post 1" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <h4><a href="#">Related Post 1</a></h4>
+                </div>
+                <div class="card">
+                    <div class="card-img-placeholder" style="height: 150px; padding: 0; overflow: hidden;">
+                        <img src="../images/vegan.png" alt="Related Post 2" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <h4><a href="#">Related Post 2</a></h4>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 Wagamama Menu Guide. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
